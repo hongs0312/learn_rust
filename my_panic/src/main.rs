@@ -1,4 +1,4 @@
-use std::fs::File;
+use std::fs::{File, read_to_string};
 use std::io::{self, ErrorKind, Read, Error};
 
 fn main() {
@@ -55,4 +55,12 @@ fn read_username_from_file() -> Result<String, io::Error> {
 
     username_file.read_to_string(&mut username)?;
     Ok(username)
+
+    // ? 연산자 뒤에 메서드 호출을 붙여 더 간단하게도 작성 가능
+    // File::open("hello.txt")?read_to_string(&mut username)?;
+
+    // ? 연산자는 Result, Option, FromResidual을 구현한 타입을 반환하는 함수에서만 사용 가능
+
+    // 가장 간단한건 이미 구현된 함수를 쓰는 것
+    // fs::read_to_string("hello.txt")
 }
